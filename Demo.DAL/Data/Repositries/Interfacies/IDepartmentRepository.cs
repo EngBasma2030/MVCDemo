@@ -10,7 +10,7 @@ namespace Demo.DAL.Data.Repositries.Interfacies
     public interface IDepartmentRepository
     {
         // Get All 
-        IEnumerable<Department> GetAll(bool withTracking); 
+        IEnumerable<Department> GetAll(bool withTracking = false); 
 
         // Get By Id 
         Department GetById(int id);

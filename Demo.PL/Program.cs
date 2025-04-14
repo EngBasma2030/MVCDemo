@@ -1,4 +1,7 @@
+using Cemo.BLL.Services;
 using Demo.DAL.Data;
+using Demo.DAL.Data.Repositries.Classes;
+using Demo.DAL.Data.Repositries.Interfacies;
 using Microsoft.EntityFrameworkCore;
 
 namespace Demo.PL
@@ -17,6 +20,8 @@ namespace Demo.PL
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
             });
+            builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+            builder.Services.AddScoped<IDepartmentService, DepartmentService>();
             #endregion
 
             var app = builder.Build();
