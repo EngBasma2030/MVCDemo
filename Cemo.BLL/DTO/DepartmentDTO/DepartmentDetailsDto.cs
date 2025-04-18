@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cemo.BLL.DTO
+namespace Cemo.BLL.DTO.DepartmentDTO
 {
     public class DepartmentDetailsDto
     {
@@ -23,7 +23,7 @@ namespace Cemo.BLL.DTO
         public int LastModifiedBy { get; set; } // User Id
         public bool IsDeleted { get; set; } // Soft Delete
         public string Name { get; set; } = string.Empty;
-        public string Code { get; set; } = String.Empty;            
+        public string Code { get; set; } = string.Empty;
         public string? Description { get; set; }
     }
 }

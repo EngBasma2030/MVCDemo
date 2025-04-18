@@ -1,4 +1,6 @@
-using Cemo.BLL.Services;
+using Cemo.BLL.Profiles;
+using Cemo.BLL.Services.Classes;
+using Cemo.BLL.Services.Interfaces;
 using Demo.DAL.Data;
 using Demo.DAL.Data.Repositries.Classes;
 using Demo.DAL.Data.Repositries.Interfacies;
@@ -22,9 +24,13 @@ namespace Demo.PL
             });
             builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
             builder.Services.AddScoped<IDepartmentService, DepartmentService>();
+            builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            // builder.Services.AddAutoMapper(typeof(MappingProfiles).Assembly);
+            builder.Services.AddAutoMapper(M => M.AddProfile(new MappingProfiles()));
+            builder.Services.AddScoped<IEmployeeService, EmployeeService>();
             #endregion
 
-            var app = builder.Build();
+             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
             #region Cinfigure [MiddleWars]
