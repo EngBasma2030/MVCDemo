@@ -1,6 +1,6 @@
-﻿using Cemo.BLL.DTO;
+﻿using Cemo.BLL.DTO.DepartmentDTO;
 
-namespace Cemo.BLL.Services
+namespace Cemo.BLL.Services.Interfaces
 {
     public interface IDepartmentService
     {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cemo.BLL.DTO
+namespace Cemo.BLL.DTO.DepartmentDTO
 {
     public class DepartmentDto
     {
@@ -14,8 +14,7 @@ namespace Cemo.BLL.DTO
         public string Code { get; set; }
         public string? Description { get; set; }
 
-        [Display(Name= "Date Of Creation")]
+        [Display(Name = "Date Of Creation")]
         public DateOnly? DateOfCreation { get; set; }
     }
 }
-        

@@ -1,5 +1,6 @@
-﻿using Cemo.BLL.DTO;
+﻿using Cemo.BLL.DTO.DepartmentDTO;
 using Cemo.BLL.Factories;
+using Cemo.BLL.Services.Interfaces;
 using Demo.DAL.Data.Repositries.Classes;
 using Demo.DAL.Data.Repositries.Interfacies;
 using Demo.DAL.Models;
@@ -9,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cemo.BLL.Services
+namespace Cemo.BLL.Services.Classes
 {
     // primary constructor
     public class DepartmentService(IDepartmentRepository _departmentRepository) : IDepartmentService

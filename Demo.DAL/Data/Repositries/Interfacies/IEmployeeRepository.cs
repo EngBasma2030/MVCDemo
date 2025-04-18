@@ -1,4 +1,5 @@
 ﻿using Demo.DAL.Models;
+using Demo.DAL.Models.EmployeeModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace Demo.DAL.Data.Repositries.Interfacies
 {
-    public interface IDepartmentRepository : IGenericRepository<Department>
+    public interface IEmployeeRepository : IGenericRepository<Employee>
     {
-        
+        IQueryable<Employee> GetEmployeeByAddress(string address);
     }
 }

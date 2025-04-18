@@ -1,4 +1,4 @@
-﻿using Cemo.BLL.DTO;
+﻿using Cemo.BLL.DTO.DepartmentDTO;
 using Demo.DAL.Models;
 using System;
 using System.Collections.Generic;
