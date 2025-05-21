@@ -42,8 +42,9 @@ namespace Cemo.BLL.Services.AttachmentService
             //8. Return FileName To Store In Database
             return fileName;
         }
-        public bool Delete(string filePath)
+        public bool Delete(string fileName , string folderName)
         {
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Files", folderName , fileName);
             if (File.Exists(filePath)) return false;
             else
             {
