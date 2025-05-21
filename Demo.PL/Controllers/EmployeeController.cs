@@ -1,4 +1,5 @@
 ﻿using Cemo.BLL.DTO.EmployeeDTO;
+using Cemo.BLL.Services.AttachmentService;
 using Cemo.BLL.Services.Interfaces;
 using Demo.DAL.Models.EmployeeModel;
 using Demo.PL.ViewModels.Employee;
@@ -8,7 +9,7 @@ using Microsoft.EntityFrameworkCore.ValueGeneration.Internal;
 namespace Demo.PL.Controllers
 {
     public class EmployeeController(IEmployeeService _employeeService, IDepartmentService _departmentService ,
-        ILogger<EmployeeController> _logger, IWebHostEnvironment _environment) : Controller
+        ILogger<EmployeeController> _logger, IWebHostEnvironment _environment , IAttachmentService attachmentService) : Controller
     {
 
         public IActionResult Index(string? EmployeeSearchName)
@@ -203,7 +204,10 @@ namespace Demo.PL.Controllers
             {
                 var deleted = _employeeService.DeleteEmployee(id);
                 if (deleted)
+                {
+
                     return RedirectToAction(nameof(Index));
+                }
                 else
                 {
                     ModelState.AddModelError(string.Empty, " Employee can't be deleted !!");

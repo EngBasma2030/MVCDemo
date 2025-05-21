@@ -12,6 +12,6 @@ namespace Cemo.BLL.Services.AttachmentService
         // upload attachment
         public string? Uplooad(IFormFile file, string folderName);
         // delete 
-        bool Delete(string filePath);
+        bool Delete(string fileName , string folderName);
     }
 }

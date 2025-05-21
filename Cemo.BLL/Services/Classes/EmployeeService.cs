@@ -95,15 +95,24 @@ namespace Cemo.BLL.Services.Classes
             return unitOfWork.SaveChanges();
         }
 
-        public bool DeleteEmployee(int id) // Soft Delete 
+        public bool DeleteEmployee(int id) //ممسحش من علي السيرفر  Soft Delete  لو شغاله  
         {
             var employee = unitOfWork.EmployeeRepository.GetById(id);
+
             if (employee == null) return false;
             else
             {
                 employee.IsDeleted = true;
+                employee.ImageName = null;
                unitOfWork.EmployeeRepository.Update(employee) ;
-              return  unitOfWork.SaveChanges() > 0 ? true : false; 
+                int result = unitOfWork.SaveChanges();
+                if (result > 0)
+                {
+                    attachmentService.Delete(employee.ImageName, "images");
+                    return true;
+                }
+                else
+                    return false;
             }
         }
 

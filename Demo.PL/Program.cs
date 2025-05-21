@@ -5,6 +5,8 @@ using Cemo.BLL.Services.Interfaces;
 using Demo.DAL.Data;
 using Demo.DAL.Data.Repositries.Classes;
 using Demo.DAL.Data.Repositries.Interfacies;
+using Demo.DAL.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace Demo.PL
@@ -32,9 +34,20 @@ namespace Demo.PL
             builder.Services.AddScoped<IEmployeeService, EmployeeService>();
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
             builder.Services.AddScoped<IAttachmentService, AttachmentService>();
+
+            //builder.Services.AddScoped<UserManager<ApplicationUser>>();
+            //builder.Services.AddScoped<SignInManager<ApplicationUser>>();
+            //builder.Services.AddScoped<RoleManager<IdentityRole>>();
+
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options => 
+            {
+                //options.User.RequireUniqueEmail = true;
+                //options.Password.RequireUppercase = true;
+                //options.Password.RequireLowercase = true;
+            }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders(); 
             #endregion
 
-             var app = builder.Build();
+            var app = builder.Build();
 
             // Configure the HTTP request pipeline.
             #region Cinfigure [MiddleWars]
@@ -50,12 +63,12 @@ namespace Demo.PL
 
             app.UseRouting();
 
-            //app.UseAuthentication(); // Omar
-            //app.UseAuthorization(); // Admin
+            app.UseAuthentication(); // Omar
+            app.UseAuthorization(); // Admin
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}"); 
+                pattern: "{controller=Account}/{action=Register}/{id?}"); 
             #endregion
 
             app.Run();
